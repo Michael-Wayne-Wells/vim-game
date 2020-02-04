@@ -13,6 +13,3 @@ PLATFORMS
 DEPENDENCIES
   gosu
   gosu_tiled
-
-BUNDLED WITH
-   2.1.4

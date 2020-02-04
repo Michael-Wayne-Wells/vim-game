@@ -1,6 +1,6 @@
 require "gosu"
 
-WIDTH, HEIGHT = 800, 800
+WIDTH, HEIGHT = 1240, 800
 
 module Tiles
   Black = 1
