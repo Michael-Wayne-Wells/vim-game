@@ -64,11 +64,3 @@ class Ghost
   end
 
 end
-
-
-
-
-
-
-
-end
