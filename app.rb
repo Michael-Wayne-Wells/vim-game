@@ -1,9 +1,8 @@
-require './lib/game.rb'
-require './lib/map.rb'
-require './lib/menu.rb'
+require 'gosu'
 
-
-# require 'pry'
-
+$LOAD_PATH << './lib'
+Dir.glob("lib/*.rb").each do |file|
+  require File.basename(file, "*.rb")
+end
 
 VimGame.new.show if __FILE__ == $0

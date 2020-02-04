@@ -17,7 +17,7 @@ class Player
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y +86, :width => @width, :height => 100}
+    {:x => x, :y => y + 86, :width => @width, :height => 100}
   end
 
   def update
@@ -51,7 +51,7 @@ class Player
       @y = new_y
     end
   end
-
+end
 # need @player_points
 #need bonus method
 #need dots_collected? method

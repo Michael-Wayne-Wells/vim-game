@@ -10,7 +10,7 @@ class SuperDot
     ]
 
     @x = column * 101
-    @y = = -70 + row * 85
+    @y = -70 + row * 85
   end
 
   def draw
@@ -18,4 +18,4 @@ class SuperDot
     image =  @images[modulo]
     image.draw(@x + modulo, @y + modulo, 0)
   end
-end  
+end
