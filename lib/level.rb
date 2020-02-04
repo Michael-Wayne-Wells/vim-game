@@ -11,7 +11,7 @@ class Level
     @window.caption         = "Pacman Vim"
     # @background_music       = Song.new(@window, "media/4pm.mp3")
     @map                    = Map.new(@window)
-    @player, @dots, @ghosts, @bonus = read_level(level, ROWS, COLUMNS)
+    @player, @dots, @ghosts, @cherry = read_level(level, ROWS, COLUMNS)
     # @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
   end
 
@@ -21,10 +21,10 @@ class Level
     @player.move_up     if @window.button_down? KbK
     @player.move_down   if @window.button_down? KbL
     @player.collect_dots(@dots)
-    @player.collect_bonus(@bonus) unless @player.bonus_collected?
+    @player.collect_cherry(@cherry) unless @player.cherry_collected?
     if hit_by_ghost?
       game_over
-    elsif @dots.size == 0 && @player.bonus_collected?
+    elsif @dots.size == 0 && @player.cherry_collected?
       level_finished
     end
     @ghosts.each{ |ghost| ghost.update }
@@ -35,7 +35,7 @@ class Level
     (@dots + @ghosts).each do |e|
       e.draw
     end
-    @bonus.draw unless @player.bonus_collected?
+    @cherry.draw unless @player.cherry_collected?
     @player.draw
   end
 
@@ -74,7 +74,7 @@ class Level
     player = nil
     dots   = []
     ghosts   = []
-    bonus    = nil
+    cherry    = nil
     level  = File.open(level[:path]).readlines[1..-1]
 
     rows.times do |row|
@@ -88,13 +88,13 @@ class Level
           when 'B'
             ghosts << Ghost.new(@window, self, column, row)
           when 'K'
-            bonus = Bonus.new(@window, column, row)
+            cherry = cherry.new(@window, column, row)
           else
         end
         @map.add_tile(row, column, tile_type)
       end
     end
 
-    [player, dots, ghosts, bonus]
+    [player, dots, ghosts, cherry]
   end
 end
