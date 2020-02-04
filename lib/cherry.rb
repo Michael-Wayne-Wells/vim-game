@@ -17,5 +17,5 @@ class Cherry
   def draw
     @image.draw(@x,@y, 0)
   end
-  
+
 end
