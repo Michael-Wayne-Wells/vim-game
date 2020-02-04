@@ -4,9 +4,11 @@ WIDTH, HEIGHT = 800, 800
 
 module Tiles
   Black = 1
-  Grass = 7
+  Grass = 14
   Earth = 7
 end
+
+
 
 class CollectibleGem
   attr_reader :x, :y
@@ -114,7 +116,7 @@ class VimGame < (Example rescue Gosu::Window)
     self.caption = "Cptn. Ruby"
 
     @sky = Gosu::Image.new("media/space.png", tileable: true)
-    @map = Map.new("media/cptn_ruby_map.txt")
+    @map = Map.new("media/levelone.txt")
     @camera_x = @camera_y = 0
   end
 
@@ -133,4 +135,3 @@ class VimGame < (Example rescue Gosu::Window)
 
 end
 
-VimGame.new.show if __FILE__ == $0

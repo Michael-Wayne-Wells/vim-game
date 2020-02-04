@@ -19,8 +19,8 @@ class Map
         when '#'
           Tiles::Earth
         when 'x'
-          @gems.push(CollectibleGem.new(gem_img, x * 20 + 25, y * 20 + 25))
-          nil
+          Tiles::Grass
+         
         else
           nil
         end
