@@ -106,61 +106,8 @@ class Player
 end
 
 # Map class holds and draws tiles and gems.
-class Map
-  attr_reader :width, :height, :gems
 
-  def initialize(filename)
-    # Load 60x60 tiles, 5px overlap in all four directions.
-    @tileset = Gosu::Image.load_tiles("media/Floor.png", 48, 48, tileable: true)
-    Gosu::Image.load_tiles  ("media/Ground0.png", 16, 16, tileable: true)
-    gem_img = Gosu::Image.new("media/gem.png")
-    @gems = []
-
-    lines = File.readlines(filename).map { |line| line.chomp }
-    @height = lines.size
-    @width = lines[0].size
-    @tiles = Array.new(@width) do |x|
-      Array.new(@height) do |y|
-        case lines[y][x, 1]
-        when '.'
-          Tiles::Black
-        when '"'
-          Tiles::Grass
-        when '#'
-          Tiles::Earth
-        when 'x'
-          @gems.push(CollectibleGem.new(gem_img, x * 20 + 25, y * 20 + 25))
-          nil
-        else
-          nil
-        end
-      end
-    end
-  end
-
-  def draw
-    # Very primitive drawing function:
-    # Draws all the tiles, some off-screen, some on-screen.
-    @height.times do |y|
-      @width.times do |x|
-        tile = @tiles[x][y]
-        if tile
-          # Draw the tile with an offset (tile images have some overlap)
-          # Scrolling is implemented here just as in the game objects.
-          @tileset[tile].draw(x * 48 , y * 48 , 0)
-        end
-      end
-    end
-    @gems.each { |c| c.draw }
-  end
-
-  # Solid at a given pixel position?
-  def solid?(x, y)
-    y < 0 || @tiles[x / 20][y / 20]
-  end
-end
-
-class CptnRuby < (Example rescue Gosu::Window)
+class VimGame < (Example rescue Gosu::Window)
   def initialize
     super WIDTH, HEIGHT
 
@@ -168,8 +115,6 @@ class CptnRuby < (Example rescue Gosu::Window)
 
     @sky = Gosu::Image.new("media/space.png", tileable: true)
     @map = Map.new("media/cptn_ruby_map.txt")
-    # @cptn = Player.new(@map, 400, 100)
-    # The scrolling position is stored as top left corner of the screen.
     @camera_x = @camera_y = 0
   end
 
@@ -177,31 +122,15 @@ class CptnRuby < (Example rescue Gosu::Window)
     move_x = 0
     move_x -= 5 if Gosu.button_down? Gosu::KB_LEFT
     move_x += 5 if Gosu.button_down? Gosu::KB_RIGHT
-    # @cptn.update(move_x)
-    # @cptn.collect_gems(@map.gems)
-    # Scrolling follows player
-    # @camera_x = [[@cptn.x - WIDTH / 2, 0].max, @map.width * 50 - WIDTH].min
-    # @camera_y = [[@cptn.y - HEIGHT / 2, 0].max, @map.height * 50 - HEIGHT].min
   end
 
   def draw
     @sky.draw 0, 0, 0
     Gosu.translate(-@camera_x, -@camera_y) do
       @map.draw
-      # @cptn.draw
     end
   end
 
-  # def button_down(id)
-  #   case id
-  #   when Gosu::KB_UP
-  #     @cptn.try_to_jump
-  #   when Gosu::KB_ESCAPE
-  #     close
-  #   else
-  #     super
-  #   end
-  # end
 end
 
-CptnRuby.new.show if __FILE__ == $0
+VimGame.new.show if __FILE__ == $0
