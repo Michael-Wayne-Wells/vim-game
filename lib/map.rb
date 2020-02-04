@@ -1,3 +1,4 @@
+require 'gosu'
 class Map
 
   def initialize(window)
