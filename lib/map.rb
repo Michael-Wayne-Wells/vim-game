@@ -5,8 +5,6 @@ class Map
 
   def initialize(filename)
     @tileset = Gosu::Image.load_tiles("media/Floor.png", 48, 48, tileable: true)
-    gem_img = Gosu::Image.new("media/gem.png")
-    @gems = []
 
     lines = File.readlines(filename).map { |line| line.chomp }
     @height = lines.size
@@ -15,14 +13,12 @@ class Map
       Array.new(@height) do |y|
         case lines[y][x, 1]
         when '.'
-          
           Tiles::Black
-
         when '#'
           Tiles::Earth
         when 'x'
           Tiles::Grass
-         
+
         else
           nil
         end
