@@ -1,5 +1,6 @@
 require './lib/game.rb'
 require './lib/map.rb'
+require './lib/menu.rb'
 
 
 # require 'pry'
