@@ -1,6 +1,6 @@
 require "gosu"
 
-WIDTH, HEIGHT = 1240, 800
+WIDTH, HEIGHT = 800, 800
 
 module Tiles
   Black = 1
@@ -113,8 +113,8 @@ class VimGame < (Example rescue Gosu::Window)
   def initialize
     super WIDTH, HEIGHT
 
-    self.caption = "Cptn. Ruby"
-
+    self.caption = "Pacman VIM"
+    
     @sky = Gosu::Image.new("media/space.png", tileable: true)
     @map = Map.new("media/levelone.txt")
     @camera_x = @camera_y = 0
@@ -134,4 +134,3 @@ class VimGame < (Example rescue Gosu::Window)
   end
 
 end
-
