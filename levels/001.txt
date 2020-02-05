@@ -1,4 +1,4 @@
-#: grass, G: gem, W: water, D: dirt, P: player, C: cherry, S: stone
+#:  P: player, C: cherry, S: stone, W: Stone
 ####D#WWW###DDD
 WWWWWWWWW#G#DDD
 ######WWW###DDD

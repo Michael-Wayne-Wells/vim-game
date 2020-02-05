@@ -19,7 +19,7 @@ class Level
     @player.move_left   if @window.button_down? KbH
     @player.move_right  if @window.button_down? KbL
     @player.move_up     if @window.button_down? KbK
-    @player.move_down   if @window.button_down? KbL
+    @player.move_down   if @window.button_down? KbJ
     @player.collect_dots(@dots)
     @player.collect_cherry(@cherry) unless @player.cherry_collected?
     # if hit_by_ghost?
