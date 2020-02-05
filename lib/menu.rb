@@ -7,7 +7,7 @@ class Menu
       @window,
       "Pacman VIM",
       Gosu::default_font_name,
-      80,
+      50,
       10,
       WIDTH,
       :center

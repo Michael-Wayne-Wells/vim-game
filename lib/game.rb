@@ -7,8 +7,7 @@ end
 
 include Gosu
 
-WIDTH, HEIGHT = 1310, 900
-
+WIDTH, HEIGHT = 1310, 1000
 
 class VimGame < (Example rescue Gosu::Window)
 
