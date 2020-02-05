@@ -22,11 +22,11 @@ class Level
     @player.move_down   if @window.button_down? KbJ
     @player.collect_dots(@dots)
     @player.collect_cherry(@cherry) unless @player.cherry_collected?
-    # if hit_by_ghost?
-    #   game_over
-    # elsif @dots.size == 0 && @player.cherry_collected?
-    #   level_finished
-    # end
+    if hit_by_ghost?
+      game_over
+    elsif @dots.size == 0
+      level_finished
+    end
     @ghosts.each{ |ghost| ghost.update }
   end
 
@@ -65,10 +65,10 @@ class Level
     @window.show_level_finished_screen
   end
 
-  # def game_over
-  #   puts 'game over'
-  #   @window.show_game_over_screen
-  # end
+  def game_over
+    puts 'game over'
+    @window.show_game_over_screen
+  end
 
   def read_level(level, rows, columns)
     player = nil
