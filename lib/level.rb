@@ -88,7 +88,7 @@ class Level
           when 'B'
             ghosts << Ghost.new(@window, self, column, row)
           when 'K'
-            cherry = cherry.new(@window, column, row)
+            cherry = Cherry.new(@window, column, row)
           else
         end
         @map.add_tile(row, column, tile_type)

@@ -52,35 +52,35 @@ class Player
     end
   end
 
-  # def collect_dots(dots)
-  #   dots.reject! do |dot|
-  #     Gosu::distance(@x, @y, dot.x, dot.y) < 35
-  #   end
-  # end
-  #
-  # def cherry_collected?
-  #   @cherry_collected
-  # end
-  #
-  # def collect_cherry(cherry)
-  #   if Gosu::distance(@x, @y, cherry.x, cherry.y) < 35
-  #     puts 'cherry collected'
-  #     @cherry_collected = true
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
-  #
-  # def fits?(x, y)
-  #   fits_horizontally?(x) && fits_vertically?(y)
-  # end
-  #
-  # def fits_horizontally?(x)
-  #   x > -10 && x + @width < @window.width
-  # end
-  #
-  # def fits_vertically?(y)
-  #   y > 0 - @offset_y && y + @height - @offset_x < @window.height
-  # end
+  def collect_dots(dots)
+    dots.reject! do |dot|
+      Gosu::distance(@x, @y, dot.x, dot.y) < 35
+    end
+  end
+
+  def cherry_collected?
+    @cherry_collected
+  end
+
+  def collect_cherry(cherry)
+    if Gosu::distance(@x, @y, cherry.x, cherry.y) < 35
+      puts 'cherry collected'
+      @cherry_collected = true
+      true
+    else
+      false
+    end
+  end
+
+  def fits?(x, y)
+    fits_horizontally?(x) && fits_vertically?(y)
+  end
+
+  def fits_horizontally?(x)
+    x > -10 && x + @width < @window.width
+  end
+
+  def fits_vertically?(y)
+    y > 0 - @offset_y && y + @height - @offset_x < @window.height
+  end
 end

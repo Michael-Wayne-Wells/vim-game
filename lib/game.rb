@@ -9,24 +9,20 @@ include Gosu
 
 WIDTH, HEIGHT = 1240, 800
 
-module Tiles
-  Black = 1
-  Grass = 14
-  Earth = 7
-end
-
 class VimGame < (Example rescue Gosu::Window)
 
   attr_accessor :controller
 
   def initialize
-    super(WIDTH, HEIGHT, false)
-    self.caption = "PacVim"
-    @menu_controller = Menu.new(self)
-    # @sky = Gosu::Image.new("media/space.png", tileable: true)
-    @map = Map.new("media/levelone.txt")
-    @controller = @menu_controller
-    show_main_menu
+    puts 'You can use puts to print out debugging information'
+      super(WIDTH, HEIGHT, false)
+      self.caption            = "PacVim"
+      @menu_controller        = Menu.new(self)
+      # @game_over_screen       = GameOverScreen.new(self)
+      # @level_finished_screen  = LevelFinishedScreen.new(self)
+      @controller             = @menu_controller
+      @levels                 = read_levels
+      show_main_menu
   end
 
   def show_main_menu
@@ -43,13 +39,13 @@ class VimGame < (Example rescue Gosu::Window)
     end
   end
 
-  def show_game_over_screen
-    @controller = @game_over_screen
-  end
+  # def show_game_over_screen
+  #   @controller = @game_over_screen
+  # end
 
-  def show_level_finished_screen
-    @controller = @level_finished_screen
-  end
+  # def show_level_finished_screen
+  #   @controller = @level_finished_screen
+  # end
 
   def update
     @controller.update
@@ -57,7 +53,6 @@ class VimGame < (Example rescue Gosu::Window)
 
   def draw
     @controller.draw
-    # @map.draw
   end
 
   def button_down(id)
@@ -67,7 +62,7 @@ class VimGame < (Example rescue Gosu::Window)
   protected
 
   def read_levels
-    Dir.glob("media/levelone.txt").map do |path|
+    Dir.glob("levels/*.txt").map do |path|
       {
         :path  => path,
         :level => File.basename(path, ".txt").to_i
