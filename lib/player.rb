@@ -58,7 +58,7 @@ class Player
   def move(x, y)
     new_x = @x + x
     new_y = @y + y
-    if  @level.map.walkable?(hit_box(new_x, new_y))
+    if fits?(new_x, new_y) && @level.map.walkable?(hit_box(new_x, new_y))
       @x = new_x
       @y = new_y
     end
@@ -84,15 +84,15 @@ class Player
     end
   end
 
-  # def fits?(x, y)
-  #   fits_horizontally?(x) && fits_vertically?(y)
-  # end
-  #
-  # def fits_horizontally?(x)
-  #   x > -10 && x + @width < @window.width
-  # end
-  #
-  # def fits_vertically?(y)
-  #   y > 0 - @offset_y && y + @height - @offset_x < @window.height
-  # end
+  def fits?(x, y)
+    fits_horizontally?(x) && fits_vertically?(y)
+  end
+
+  def fits_horizontally?(x)
+    x > -10 && x + @width < @window.width
+  end
+
+  def fits_vertically?(y)
+    y > 0 - @offset_y && y + @height - @offset_x < @window.height
+  end
 end
