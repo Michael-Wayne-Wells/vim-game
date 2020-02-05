@@ -1,23 +1,23 @@
-class Goose
+class Yoshi
 
   attr_reader :x, :y
-  DIRECTIONS = [:left, :right, :up, :down]
+  DIRECTIONS       = [:left, :right, :up, :down]
 
   def initialize(window, level, column, row)
     @window = window
-    @level = level
-    @image = Image.new(@window, "media/goose.png", true)
-    @width = @image.width
+    @level  = level
+    @image  = Image.new(@window, "media/yoshi.png", true)
+    @width  = @image.width
     @height = @image.height
     @offset_y = 65
     @x = column * @image.width
     @y = row * 75 - @offset_y
     @direction = :down
-    @walking_speed = rand (2..7)
+    @walking_speed = rand(2..5)
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y + @offset_y, :width => @width, :height => 80}
+    {:x => x, :y => y + @offset_y, :width => @width, :height => 100}
   end
 
   def update
@@ -30,15 +30,15 @@ class Goose
 
   def draw
     if @direction == :left
-      @image.draw(@x, @y, 0, -1.0, 1.0)
+      @image.draw(@x,@y, 0, -1.0, 1.0)
     else
-      @image.draw(@x, @y, 0)
+      @image.draw(@x,@y, 0)
     end
   end
 
   def try_keep_walking
     x, y = coordinates_to_continue_direction
-    if @level.map.walkable?(hit_box(x, y))
+    if fits?(x, y) && @level.map.walkable?(hit_box(x, y))
       @x = x
       @y = y
     else
@@ -53,14 +53,26 @@ class Goose
   def coordinates_to_continue_direction
     case @direction
       when :down
-        [@x, @y + @walking_speed]
+          [@x, @y + @walking_speed]
       when :up
-        [@x, @y - @walking_speed]
+          [@x, @y - @walking_speed]
       when :left
-        [@x - @walking_speed, @y]
+          [@x - @walking_speed, @y]
       when :right
-        [@x + @walking_speed, @y]
+          [@x + @walking_speed, @y]
     end
+  end
+
+  def fits?(x, y)
+    fits_horizontally?(x) && fits_vertically?(y)
+  end
+
+  def fits_horizontally?(x)
+    x > -10 && x + @width < @window.width
+  end
+
+  def fits_vertically?(y)
+    y > 0 - @offset_y && y + @height - @offset_y / 2 < @window.height
   end
 
 end
