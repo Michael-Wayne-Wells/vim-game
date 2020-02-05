@@ -54,7 +54,8 @@ class Player
 
   def collect_dots(dots)
     dots.reject! do |dot|
-      Gosu::distance(@x, @y, dot.x, dot.y) < 35
+      Gosu::distance(@x + 50, @y + 20, dot.x, dot.y) < 50
+
     end
   end
 

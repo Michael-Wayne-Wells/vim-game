@@ -19,7 +19,7 @@ class VimGame < (Example rescue Gosu::Window)
       self.caption            = "PacVim"
       @menu_controller        = Menu.new(self)
       @game_over_screen       = GameOverScreen.new(self)
-      # @level_finished_screen  = LevelFinishedScreen.new(self)
+      @level_finished_screen  = LevelFinishedScreen.new(self)
       @controller             = @menu_controller
       @levels                 = read_levels
       show_main_menu
@@ -43,9 +43,9 @@ class VimGame < (Example rescue Gosu::Window)
     @controller = @game_over_screen
   end
 
-  # def show_level_finished_screen
-  #   @controller = @level_finished_screen
-  # end
+  def show_level_finished_screen
+    @controller = @level_finished_screen
+  end
 
   def update
     @controller.update
