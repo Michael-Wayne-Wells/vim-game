@@ -2,11 +2,11 @@
 ###D#DB##D#####
 #B#B##B##BDB###
 P##D######D####
-###DDCDDDDDDDDD
+###DDCDDDDDDD##
 BB#D#BBB###BB##
 ###D##B###M##D#
-DDDDDDDD#DDDDDD
+##DDDDDD#DDDDD#
 #B#B###D#B#B#D#
-######BD##DDDDD
-DGDDD#BD#####DD
+######BD##DDDD#
+#GDDD#BD#####D#
 ##Y####D#######
