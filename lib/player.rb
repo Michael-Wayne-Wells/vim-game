@@ -27,8 +27,11 @@ class Player
   end
 
   def draw
-    @image.draw(@x, @y, 0)
-    # (@x, @y, 0)
+    if @direction == :left
+      @image.draw(@x, @y, 0, -1.0, 1.0)
+    else
+      @image.draw(@x, @y, 0)
+    end
   end
 
   def move_left
