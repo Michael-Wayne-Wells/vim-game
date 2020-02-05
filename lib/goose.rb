@@ -1,4 +1,4 @@
-class Ghost
+class Goose
 
   attr_reader :x, :y
   DIRECTIONS = [:left, :right, :up, :down]
@@ -6,18 +6,18 @@ class Ghost
   def initialize(window, level, column, row)
     @window = window
     @level = level
-    @image = Image.new(@window, "media/ghost.png", true)
+    @image = Image.new(@window, "media/goose.png", true)
     @width = @image.width
     @height = @image.height
     @offset_y = 65
     @x = column * @image.width
     @y = row * 75 - @offset_y
     @direction = :down
-    @walking_speed = rand (2..3)
+    @walking_speed = rand (2..7)
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y + @offset_y, :width => @width, :height => 100}
+    {:x => x, :y => y + @offset_y, :width => @width, :height => 80}
   end
 
   def update
