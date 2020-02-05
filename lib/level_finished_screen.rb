@@ -4,7 +4,7 @@ class LevelFinishedScreen
     @window = window
     @title = Image.from_text(
       @window,
-      "Congrats! You know totally know vim now! right??",
+      "Congrats! You now totally know vim now! right??",
       Gosu::default_font_name,
       150,
       10,
