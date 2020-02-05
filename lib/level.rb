@@ -83,11 +83,11 @@ class Level
         case tile_type
           when 'P'
             player = Player.new(@window, self, column, row)
-          when 'G'
+          when 'D'
             dots << Dot.new(@window, column, row)
-          when 'B'
+          when 'G'
             ghosts << Ghost.new(@window, self, column, row)
-          when 'K'
+          when 'C'
             cherry = Cherry.new(@window, column, row)
           else
         end
