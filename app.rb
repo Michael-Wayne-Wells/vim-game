@@ -1,4 +1,5 @@
 require 'gosu'
+require 'pry'
 
 $LOAD_PATH << './lib'
 Dir.glob("lib/*.rb").each do |file|

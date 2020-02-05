@@ -1,10 +1,10 @@
-#:stone, B: block, C: Cherry
+#:stone, B: block, C: Cherry, M: goose
 #####DB########
 #B#B#DB##B#B###
 #####D#########
 #####C##P######
 BB###BBB###BBB#
-######B########
+######B####M###
 ###############
 #B#B#####B#B###
 ######B########
