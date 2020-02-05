@@ -9,11 +9,12 @@ class Level
     @level                  = level
     @window                 = window
     @window.caption         = "Pacman Vim"
-    # @background_music       = Song.new(@window, "media/4pm.mp3")
+    # @background_music       = Song.new("media/8-punk-8-bit-music.mp3")
+    @honk                   = Gosu::Sample.new("media/honk-sound.mp3")
     @map                    = Map.new(@window)
     @player, @dots, @ghosts, @cherry, @gooses = read_level(level, ROWS, COLUMNS)
-    # binding.pry
     # @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
+    # @honk.play(true)
   end
 
   def update
@@ -23,6 +24,7 @@ class Level
     @player.move_down   if @window.button_down? KbJ
     @player.collect_dots(@dots)
     @player.collect_cherry(@cherry) unless @player.cherry_collected?
+    # @player.goose_honk(@goose)
     if hit_by_ghost?
       game_over
     # elsif hit_by_goose?
@@ -65,21 +67,22 @@ class Level
     end
   end
 
-  # def hit_by_goose?
-  #   # binding.pry
-  #   p_box = @player.hit_box(@player.x, @player.y)
-  #   @gooses.any? do |goose|
-  #     goose_box = goose.hit_box(goose.x, goose.y)
-  #     if p_box[:x] + p_box[:width] >= goose_box[:x] &&
-  #       p_box[:x] <= goose_box[:x] + goose_box[:width] &&
-  #       p_box[:y] + p_box[:height] >= goose_box[:y] &&
-  #       p_box[:y] <= goose_box[:y] + goose_box[:height]
-  #       true
-  #     else
-  #       false
-  #     end
-  #   end
-  # end
+  def goose_honk?
+    distance
+
+    p_box = @player.hit_box(@player.x, @player.y)
+    goose_box = @goose.hit_box(@goose.x, @goose.y)
+      if p_box[:x] + p_box[:width] >= goose_box[:x] &&
+        p_box[:x] <= goose_box[:x] + goose_box[:width] &&
+        p_box[:y] + p_box[:height] >= goose_box[:y] &&
+        p_box[:y] <= goose_box[:y] + goose_box[:height]
+        @honk.play
+        true
+      else
+        false
+      end
+    end
+  end
 
   def level_finished
     puts 'finished level'
