@@ -1,12 +1,12 @@
-#:  P: player, C: cherry, #: #tone, B: #tone
+#:  P: player, C: cherry, #: stone, B: block
 ######BBB######
 BBBBBBBBB#G####
 ######BBB###C##
 ###G##BBB###G##
-###D#######D###
-#BBBB#G#B#####D
-####B###B###G##
-BB##BBBBBBB####
-##########BBB##
-#P##BBBBG###B##
+DDDDDDDD####DDD
+DBBBB#GD####D##
+D###B##DDDDDD##
+BB#DBBBBBBB####
+###D######BBB##
+#PDDBBBBG###B##
 ####B#######G##
