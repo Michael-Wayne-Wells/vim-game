@@ -11,7 +11,7 @@ class Level
     @window.caption         = "Pacman Vim"
     # @background_music       = Song.new(@window, "media/4pm.mp3")
     @map                    = Map.new(@window)
-    @player, @dots, @ghosts, @cherry, @gooses = read_level(level, ROWS, COLUMNS)
+    @player, @dots, @ghosts, @cherry, @gooses, @yoshis = read_level(level, ROWS, COLUMNS)
     # binding.pry
     # @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
   end
@@ -40,6 +40,7 @@ class Level
       e.draw
     end
     @gooses.draw
+    @yoshis.draw
     @cherry.draw unless @player.cherry_collected?
     @player.draw
   end
@@ -96,6 +97,7 @@ class Level
     dots   = []
     ghosts   = []
     gooses = []
+    yoshis = []
     cherry    = nil
     level  = File.open(level[:path]).readlines[1..-1]
 
@@ -113,12 +115,14 @@ class Level
             cherry = Cherry.new(@window, column, row)
           when 'M'
             gooses = Goose.new(@window, self, column, row)
+          when 'Y'
+            yoshis = Yoshi.new(@window, self, column, row)
           else
         end
         @map.add_tile(row, column, tile_type)
       end
     end
 
-    [player, dots, ghosts, cherry, gooses]
+    [player, dots, ghosts, cherry, gooses, yoshis]
   end
 end
