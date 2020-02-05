@@ -4,7 +4,7 @@ BBBBBBBBB#G####
 ######BBB###C##
 ###G##BBB###G##
 DDDDDDDD####DDD
-DBBBB#GD##M#D##
+#BBBB#GD##M#D##
 D###B##DDDDDD##
 BB#DBBBBBBB####
 ###D######BBB##

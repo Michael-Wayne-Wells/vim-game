@@ -17,7 +17,7 @@ class Goose
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y + @offset_y, :width => @width, :height => 100}
+    {:x => x, :y => y + @offset_y, :width => @width, :height => 80}
   end
 
   def update
