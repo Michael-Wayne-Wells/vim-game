@@ -11,7 +11,8 @@ class Level
     @window.caption         = "Pacman Vim"
     # @background_music       = Song.new(@window, "media/4pm.mp3")
     @map                    = Map.new(@window)
-    @player, @dots, @ghosts, @cherry = read_level(level, ROWS, COLUMNS)
+    @player, @dots, @ghosts, @cherry, @gooses = read_level(level, ROWS, COLUMNS)
+    # binding.pry
     # @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
   end
 
@@ -24,10 +25,13 @@ class Level
     @player.collect_cherry(@cherry) unless @player.cherry_collected?
     if hit_by_ghost?
       game_over
+    # elsif hit_by_goose?
+    #   game_over
     elsif @dots.size == 0
       level_finished
     end
     @ghosts.each{ |ghost| ghost.update }
+    # @gooses.each{ |goose| goose.update }
   end
 
   def draw
@@ -35,6 +39,7 @@ class Level
     (@dots + @ghosts).each do |e|
       e.draw
     end
+    @gooses.draw
     @cherry.draw unless @player.cherry_collected?
     @player.draw
   end
@@ -60,6 +65,22 @@ class Level
     end
   end
 
+  # def hit_by_goose?
+  #   # binding.pry
+  #   p_box = @player.hit_box(@player.x, @player.y)
+  #   @gooses.any? do |goose|
+  #     goose_box = goose.hit_box(goose.x, goose.y)
+  #     if p_box[:x] + p_box[:width] >= goose_box[:x] &&
+  #       p_box[:x] <= goose_box[:x] + goose_box[:width] &&
+  #       p_box[:y] + p_box[:height] >= goose_box[:y] &&
+  #       p_box[:y] <= goose_box[:y] + goose_box[:height]
+  #       true
+  #     else
+  #       false
+  #     end
+  #   end
+  # end
+
   def level_finished
     puts 'finished level'
     @window.show_level_finished_screen
@@ -74,6 +95,7 @@ class Level
     player = nil
     dots   = []
     ghosts   = []
+    gooses = []
     cherry    = nil
     level  = File.open(level[:path]).readlines[1..-1]
 
@@ -89,12 +111,14 @@ class Level
             ghosts << Ghost.new(@window, self, column, row)
           when 'C'
             cherry = Cherry.new(@window, column, row)
+          when 'M'
+            gooses = Goose.new(@window, self, column, row)
           else
         end
         @map.add_tile(row, column, tile_type)
       end
     end
 
-    [player, dots, ghosts, cherry]
+    [player, dots, ghosts, cherry, gooses]
   end
 end

@@ -1,7 +1,7 @@
 class Menu
   def initialize(window)
     @window = window
-    @menu_image = Gosu::Image.new(window, "media/menu-screen.jpg", false, :center)
+    @menu_image = Gosu::Image.new("media/menu-screen.jpg", :tileable => false)
 
     @title = Image.from_text(
       @window,
