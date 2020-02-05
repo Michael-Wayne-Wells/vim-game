@@ -7,8 +7,8 @@ class Dot
     @width = @image.width
     @height = @image.height
 
-    @x = column * 101
-    @y = -70 + row * 85
+    @x = column * 81
+    @y = -130 + row * 105
   end
 
   def update
