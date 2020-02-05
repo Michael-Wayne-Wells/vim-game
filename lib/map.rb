@@ -7,9 +7,9 @@ class Map
     @water_image = Gosu::Image.new("media/water.png", :tileable => true)
     @grass_image = Image.new("media/grass_block.png", :tileable => true)
     @tile_specs   = {
-      "W" => {:image => Image.new("media/stone_block.png", :tileable => true)  , :walkable => false },
-      "#" => {:image => Image.new("media/grass_block.png", :tileable => true)  , :walkable => true  },
-      "S" => {:image => Image.new("media/stone_block.png", :tileable => true)  , :walkable => true  },
+      "S" => {:image => Image.new("media/stone_block.png", :tileable => true)  , :walkable => false },
+      "#" => {:image => Image.new("media/stone_block.png", :tileable => true)  , :walkable => true  },
+      "B" => {:image => Image.new("media/block.png", :tileable => true)  , :walkable => true  },
       "D" => {:image => Image.new("media/dirt_block.png", :tileable => true)  , :walkable => true  }
     }
   end
