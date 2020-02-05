@@ -4,13 +4,11 @@ class Map
   def initialize(window)
     @window = window
     @tiles = [] #setup_tiles(window, rows, columns)
-    @water_image = Gosu::Image.new("media/water.png", :tileable => true)
-    @grass_image = Image.new("media/grass_block.png", :tileable => true)
+
     @tile_specs   = {
       "S" => {:image => Image.new("media/stone_block.png", :tileable => true)  , :walkable => false },
       "#" => {:image => Image.new("media/stone_block.png", :tileable => true)  , :walkable => true  },
-      "B" => {:image => Image.new("media/block.png", :tileable => true)  , :walkable => true  },
-      "D" => {:image => Image.new("media/dirt_block.png", :tileable => true)  , :walkable => true  }
+      "B" => {:image => Image.new("media/block.png", :tileable => true)  , :walkable => false }
     }
   end
 

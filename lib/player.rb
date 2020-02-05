@@ -17,7 +17,7 @@ class Player
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y + 86, :width => @width, :height => 100}
+    {:x => x, :y => y + 50, :width => @width, :height => 50}
   end
 
   def update

@@ -6,9 +6,9 @@ class Dot
     @image = Image.new(@window, "media/dot.png", true)
     @width = @image.width
     @height = @image.height
-    @offset_y = -65
-    @x = column * @image.width
-    @y = @offset_y + row * 75
+
+    @x = column * 101
+    @y = -70 + row * 85
   end
 
   def update

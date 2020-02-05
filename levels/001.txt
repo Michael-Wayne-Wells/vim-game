@@ -1,12 +1,12 @@
-#:  P: player, C: cherry, S: stone, W: Stone
-####D#WWW###DDD
-WWWWWWWWW#G#DDD
-######WWW###DDD
-###G##WWW###G#D
-SSSSSSS#######D
-SWWWWSGDDDDDDDD
-S###WSDDDDDDGDD
-SS##WSDDGDDSSDD
-#S##WSSSSSSSKDD
-#P##WWWWGSSSSSS
-####WWWW#SSSGSS
+#:  P: player, C: cherry, #: #tone, B: #tone
+######BBB######
+BBBBBBBBB#G####
+######BBB###C##
+###G##BBB###G##
+###D#######D###
+#BBBB#G#B#####D
+####B###B###G##
+BB##BBBBBBB####
+##########BBB##
+#P##BBBBG###B##
+####B#######G##
