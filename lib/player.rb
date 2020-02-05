@@ -84,6 +84,22 @@ class Player
     end
   end
 
+
+  def goose_honked?
+    @goose_honked
+  end
+
+  def goose_honk(goose)
+    if Gosu::distance(@x, @y, goose.x, goose.y) < 35
+      puts 'goose honks'
+      @goose_honked = true
+      @honk.play
+      true
+    else
+      false
+    end
+  end
+
   # def fits?(x, y)
   #   fits_horizontally?(x) && fits_vertically?(y)
   # end
@@ -95,4 +111,5 @@ class Player
   # def fits_vertically?(y)
   #   y > 0 - @offset_y && y + @height - @offset_x < @window.height
   # end
+
 end
