@@ -5,7 +5,7 @@ class Menu
 
     @title = Image.from_text(
       @window,
-      "Pacman VIM",
+      "PacMan in Vimland: Gosu Ghost Goose",
       Gosu::default_font_name,
       50,
       10,

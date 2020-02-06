@@ -9,12 +9,13 @@ class Level
     @level                  = level
     @window                 = window
     @window.caption         = "Pacman Vim"
-    # @background_music       = Song.new("media/8-punk-8-bit-music.mp3")
+    @background_music       = Song.new("media/8-punk-8-bit-music.mp3")
     @honk                   = Gosu::Sample.new("media/honk-sound.mp3")
+    @moan                   = Gosu::Sample.new("media/GHOSTLY.mp3")
+    @tongue                  = Gosu::Sample.new("media/yoshi-tongue.mp3")
     @map                    = Map.new(@window)
     @player, @dots, @ghosts, @cherry, @gooses, @yoshis = read_level(level, ROWS, COLUMNS)
-    # @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
-    # @honk.play(true)
+    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
   end
 
   def update
@@ -60,6 +61,8 @@ class Level
         player_box[:x] <= ghost_box[:x] + ghost_box[:width] &&
         player_box[:y] + player_box[:height] >= ghost_box[:y] &&
         player_box[:y] <= ghost_box[:y] + ghost_box[:height]
+        @moan.play
+        @background_music.pause
         true
       else
         false
@@ -91,7 +94,8 @@ def hit_by_goose?
       player_box[:x] <= goose_box[:x] + goose_box[:width] &&
       player_box[:y] + player_box[:height] >= goose_box[:y] &&
       player_box[:y] <= goose_box[:y] + goose_box[:height]
-      @honk.play
+      @honk.play(volume = 9, speed = 1, looping = false)
+      @background_music.pause
       true
     else
       false
