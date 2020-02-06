@@ -6,7 +6,7 @@ class Boss
   def initialize(window, level, column, row)
     @window = window
     @level = level
-    @image = Image.new("media/boss-yoshi.png", :tileable => true)
+    @image = Image.new("media/boss.png", :tileable => true)
     @width = @image.width
     @height = @image.height
     @offset_y = 65
@@ -17,7 +17,7 @@ class Boss
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y + @offset_y, :width => @width, :height => 100}
+    {:x => x, :y => y + @offset_y, :width => @width - 50, :height => @height - 50}
   end
 
   def update
@@ -30,7 +30,7 @@ class Boss
 
   def draw
     if @direction == :left
-      @image.draw(@x, @y, 0, -1.0, 1.0)
+      @image.draw(@x + 300, @y, 0, -1.0, 1.0)
     else
       @image.draw(@x, @y, 0)
     end
