@@ -1,4 +1,4 @@
-# PacVim
+# Pacman in Vimland: Gosu Ghost Goose
 ## Created by Celeste Morton, Drew Peterson, Lara Bjork, and Michael Wells, February 3-6, 2020
 ### Project Description
 
@@ -43,6 +43,10 @@ Guidance from https://guides.railsgirls.com/ruby-game
 Goose honk: https://www.myinstants.com/instant/goose-honk-44161/
 
 Success chime: http://www.orangefreesounds.com/success-sound-effect/
+
+Yoshi CONFIRM: https://www.myinstants.com/instant/yoshi-tongue/
+
+Ghost moan: https://www.freesoundeffects.com/free-track/ghostly-466382/
 
 CONFIRM Background music: http://www.orangefreesounds.com/8-punk-8-bit-music/
 
