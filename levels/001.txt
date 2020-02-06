@@ -7,6 +7,6 @@ DDDDDDDD####DDD
 #BBBB#GD##M#D##
 D###B##DDDDDD##
 BB#DBBBBBBB####
-###D######BBB##
-#PDDBBBB##C#B##
+###C######BBB##
+#PDDBBBB####B##
 ####B###M###G##
