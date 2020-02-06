@@ -22,7 +22,7 @@ class Player
   end
 
   def hit_box(x, y)
-    {:x => x, :y => y, :width => @width, :height => 80}
+    {:x => x -50, :y => y - 40, :width => @width, :height => 80}
   end
 
   def update
@@ -30,11 +30,13 @@ class Player
 
   def draw
     if @direction == :left
-      @image.draw(@x, @y, 0, -1.0, 1.0)
+      @image.draw(@x + 60, @y - 50, 0, -1.0, 1.0)
     elsif @direction == :up
       @image.draw_rot(@x, @y, 1, 270)
     elsif @direction == :down
       @image.draw_rot(@x, @y, 1, 90)
+    elsif @direction = :right
+      @image.draw(@x - 60, @y -50, 0)
     else
       @image.draw(@x, @y, 0)
     end
@@ -75,7 +77,7 @@ class Player
 
   def collect_dots(dots)
     dots.reject! do |dot|
-      Gosu::distance(@x + 50, @y + 20, dot.x, dot.y) < 35
+      Gosu::distance(@x, @y, dot.x, dot.y) < 35
     end
   end
 
@@ -84,7 +86,7 @@ class Player
   end
 
   def collect_cherry(cherry)
-    if Gosu::distance(@x, @y, cherry.x, cherry.y) < 35
+    if Gosu::distance(@x - 30, @y, cherry.x, cherry.y) < 80
       puts 'cherry collected'
       @success.play
       @cherry_collected = true

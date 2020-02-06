@@ -14,8 +14,8 @@ class Level
     @moan                   = Gosu::Sample.new("media/GHOSTLY.mp3")
     @tongue                  = Gosu::Sample.new("media/yoshi-tongue.mp3")
     @map                    = Map.new(@window)
-    @player, @dots, @ghosts, @cherry, @gooses, @yoshis = read_level(level, ROWS, COLUMNS)
-    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
+    @player, @dots, @ghosts, @cherry, @gooses, @yoshis, @bosses = read_level(level, ROWS, COLUMNS)
+    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true
   end
 
   def update
@@ -30,17 +30,20 @@ class Level
       game_over
     elsif hit_by_goose?
       game_over
+    elsif hit_by_boss?
+      game_over
     elsif @dots.size == 0
       level_finished
     end
     @ghosts.each{ |ghost| ghost.update }
     @gooses.each{ |goose| goose.update }
     @yoshis.each{ |yoshi| yoshi.update }
+    @bosses.each{ |boss| boss.update }
   end
 
   def draw
     @map.draw
-    (@dots + @ghosts + @gooses + @yoshis).each do |e|
+    (@dots + @ghosts + @gooses + @yoshis + @bosses).each do |e|
       e.draw
     end
     @cherry.draw unless @player.cherry_collected?
@@ -70,14 +73,14 @@ class Level
     end
   end
 
-  def hit_by_yoshi?
+  def hit_by_boss?
     player_box = @player.hit_box(@player.x, @player.y)
-    @yoshis.any? do |yoshi|
-      yoshi_box = yoshi.hit_box(yoshi.x, yoshi.y)
-      if player_box[:x] + player_box[:width] >= yoshi_box[:x] &&
-        player_box[:x] <= yoshi_box[:x] + yoshi_box[:width] &&
-        player_box[:y] + player_box[:height] >= yoshi_box[:y] &&
-        player_box[:y] <= yoshi_box[:y] + yoshi_box[:height]
+    @bosses.any? do |boss|
+      boss_box = boss.hit_box(boss.x, boss.y)
+      if player_box[:x] + player_box[:width] >= boss_box[:x] &&
+        player_box[:x] <= boss_box[:x] + boss_box[:width] &&
+        player_box[:y] + player_box[:height] >= boss_box[:y] &&
+        player_box[:y] <= boss_box[:y] + boss_box[:height]
         true
       else
         false
@@ -118,6 +121,7 @@ end
     ghosts   = []
     gooses = []
     yoshis = []
+    bosses = []
     cherry    = nil
     level  = File.open(level[:path]).readlines[1..-1]
 
@@ -137,6 +141,8 @@ end
         cherry = Cherry.new(@window, column, row)
       when 'Y'
         yoshis << Yoshi.new(@window, self, column, row)
+      when 'Z'
+        bosses << Boss.new(@window, self, column, row)
       else
       end
       @map.add_tile(row, column, tile_type)
@@ -145,6 +151,6 @@ end
 
 
 
-    [player, dots, ghosts, cherry, gooses, yoshis]
+    [player, dots, ghosts, cherry, gooses, yoshis, bosses]
   end
   end

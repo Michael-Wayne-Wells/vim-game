@@ -8,5 +8,5 @@ DDDDDDDD##M#D##
 D###B##DDDDDD##
 BB#DBBBBBBB####
 ###D######BBB##
-DPDDBBBB####B##
+DPDDBBBB#######
 ####B####C#####
