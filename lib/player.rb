@@ -101,18 +101,18 @@ class Player
   end
 
 
-  def goose_honked?
-    @goose_honked
-  end
-
-  def goose_honk(goose)
-    if Gosu::distance(@x, @y, goose.x, goose.y) < 35
-      puts 'goose honks'
-      @goose_honked = true
-      @honk.play
-      true
-    else
-      false
-    end
-  end
+  # def goose_honked?
+  #   @goose_honked
+  # end
+  #
+  # def goose_honk(goose)
+  #   if Gosu::distance(@x, @y, goose.x, goose.y) < 35
+  #     puts 'goose honks'
+  #     @goose_honked = true
+  #     @honk.play
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 end

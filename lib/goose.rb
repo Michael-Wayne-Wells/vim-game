@@ -6,7 +6,7 @@ class Goose
   def initialize(window, level, column, row)
     @window = window
     @level = level
-    @image = Image.new(@window, "media/goose.png", true)
+    @image = Image.new("media/goose.png", :tileable => true)
     @width = @image.width
     @height = @image.height
     @offset_y = 65
@@ -38,7 +38,7 @@ class Goose
 
   def try_keep_walking
     x, y = coordinates_to_continue_direction
-    if @level.map.walkable?(hit_box(x, y))
+    if fits?(x, y) && @level.map.walkable?(hit_box(x, y))
       @x = x
       @y = y
     else
@@ -61,6 +61,17 @@ class Goose
       when :right
         [@x + @walking_speed, @y]
     end
+  end
+  def fits?(x, y)
+    fits_horizontally?(x) && fits_vertically?(y)
+  end
+
+  def fits_horizontally?(x)
+    x > -10 && x + @width < @window.width
+  end
+
+  def fits_vertically?(y)
+    y > 0 - @offset_y && y + @height - @offset_y / 2 < @window.height
   end
 
 end
