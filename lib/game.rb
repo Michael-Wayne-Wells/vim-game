@@ -67,7 +67,7 @@ class VimGame < (Example rescue Gosu::Window)
         :path  => path,
         :level => File.basename(path, ".txt").to_i
       }
-    end.reverse
+    end
   end
 
 end

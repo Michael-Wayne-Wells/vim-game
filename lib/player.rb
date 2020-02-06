@@ -17,12 +17,13 @@ class Player
     @x = column * @image.width
     @y = row * @offset_y
     @direction = :right
+    @bleep = Gosu::Sample.new("media/bloop.wav")
     @success = Gosu::Sample.new("media/success-sound-effect.mp3")
     @angle = 0
   end
 
   def hit_box(x, y)
-    {:x => x -50, :y => y - 40, :width => 80, :height => 80}
+    {:x => x - 50, :y => y - 40, :width => 80, :height => 80}
   end
 
   def update
@@ -32,11 +33,11 @@ class Player
     if @direction == :left
       @image.draw(@x + 40, @y - 50, 0, -1.0, 1.0)
     elsif @direction == :up
-      @image.draw_rot(@x -20, @y, 1, 270)
+      @image.draw_rot(@x - 20, @y, 1, 270)
     elsif @direction == :down
       @image.draw_rot(@x - 20, @y, 1, 90)
-    elsif @direction = :right
-      @image.draw(@x - 40, @y -50, 0)
+    elsif @direction == :right
+      @image.draw(@x - 40, @y - 50, 0)
     else
       @image.draw(@x - 20, @y, 0)
     end
@@ -77,7 +78,10 @@ class Player
 
   def collect_dots(dots)
     dots.reject! do |dot|
-      Gosu::distance(@x, @y, dot.x, dot.y) < 35
+      if Gosu::distance(@x, @y, dot.x, dot.y) < 35
+        @bleep.play
+        Gosu::distance(@x, @y, dot.x, dot.y) < 35
+      end
     end
   end
 
