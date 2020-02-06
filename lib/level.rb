@@ -13,6 +13,7 @@ class Level
     @honk                   = Gosu::Sample.new("media/honk-sound.mp3")
     @moan                   = Gosu::Sample.new("media/GHOSTLY.mp3")
     @ow                  = Gosu::Sample.new("media/yoshi-ow.mp3")
+    @bleep = Gosu::Sample.new("media/bloop.wav")
     @map                    = Map.new(@window)
     @player, @dots, @ghosts, @cherry, @gooses, @yoshis, @bosses = read_level(level, ROWS, COLUMNS)
     @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
