@@ -81,7 +81,7 @@ class Player
     if @window.button_down? KbI
 
       dots.reject! do |dot|
-
+        @bleep.play(volume = 0.03, speed = 1, looping = false)
         Gosu::distance(@x, @y, dot.x, dot.y) < 35
       end
     end
