@@ -21,7 +21,7 @@ class VimGame < (Example rescue Gosu::Window)
       @game_over_screen       = GameOverScreen.new(self)
       @level_finished_screen  = LevelFinishedScreen.new(self)
       @controller             = @menu_controller
-      @levels                 = read_levels
+      @levels                 = read_levels.sort_by { |k,v| v }
       show_main_menu
   end
 
