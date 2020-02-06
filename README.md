@@ -1,5 +1,7 @@
 # Pacman in Vimland: Gosu Ghost Goose
 ## Created by Celeste Morton, Drew Peterson, Lara Bjork, and Michael Wells, February 3-6, 2020
+
+![pac-gif](/media/pacgif.gif)
 ### Project Description
 
 This project was completed as a team assignment at the conclusion of a seven-week Ruby class at Epicodus.
@@ -45,6 +47,8 @@ Goose honk: https://www.myinstants.com/instant/goose-honk-44161/
 Success chime: http://www.orangefreesounds.com/success-sound-effect/
 
 Yoshi CONFIRM: https://www.myinstants.com/instant/yoshi-tongue/
+
+Dot-Bleep-Bloop: https://freesound.org/people/Greencouch/sounds/124902/
 
 Ghost moan: https://www.freesoundeffects.com/free-track/ghostly-466382/
 
