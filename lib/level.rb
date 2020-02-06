@@ -128,4 +128,3 @@ class Level
 
     [player, dots, ghosts, cherry, gooses, yoshis]
   end
-end

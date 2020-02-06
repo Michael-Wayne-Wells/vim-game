@@ -38,10 +38,17 @@ Unless otherwise indicated, these commands will all be entered in your terminal 
 
 ### Sources and Inspiration
 SAY MORE ABOUT THINGS THAT WE USED / REFERENCED
+Guidance from https://guides.railsgirls.com/ruby-game
 
 Goose honk: https://www.myinstants.com/instant/goose-honk-44161/
 
+Success chime: http://www.orangefreesounds.com/success-sound-effect/
+
 CONFIRM Background music: http://www.orangefreesounds.com/8-punk-8-bit-music/
+
+"Winners don't use drugs" https://www.spriters-resource.com/arcade/bustamovepuzzlebobble/sheet/14029/
+
+Goose was drawn in piskelapp.com, using this sprite sheet as inspiration https://www.spriters-resource.com/custom_edited/untitledgoosegamecustoms/sheet/122248/. Untitled Goose Game
 
 If something doesn't display correctly or goes wrong somehow, please contact us at INSERT ALL OF OUR EMAIL ADDRESSES <lara.m.bjork@gmail.com> and we will do our best to troubleshoot for you.
 
