@@ -6,7 +6,7 @@ class GameOverScreen
 
     @title = Image.from_text(
       @window,
-      "Game Over !!!!",
+      "GAME OVER !!!",
       Gosu::default_font_name,
       150,
       10,
