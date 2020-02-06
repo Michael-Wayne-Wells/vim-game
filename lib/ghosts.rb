@@ -6,7 +6,7 @@ class Ghost
   def initialize(window, level, column, row)
     @window = window
     @level = level
-    @image = Image.new(@window, "media/ghost.png", true)
+    @image = Image.new("media/goose.png", :tileable => true)
     @width = @image.width
     @height = @image.height
     @offset_y = 65
@@ -74,6 +74,5 @@ class Ghost
   def fits_vertically?(y)
     y > 0 - @offset_y && y + @height - @offset_y / 2 < @window.height
   end
-
 
 end
