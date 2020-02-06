@@ -12,12 +12,13 @@ class Player
     @image = @chomp2
     @width = @image.width
     @height = @image.height
-    @offset_x = 55
-    @offset_y = 75
+    @offset_x = 40
+    @offset_y = 80
     @x = column * @image.width
     @y = row * @offset_y
     @direction = :right
     @success = Gosu::Sample.new("media/success-sound-effect.mp3")
+    @angle = 0
   end
 
   def hit_box(x, y)
@@ -30,6 +31,10 @@ class Player
   def draw
     if @direction == :left
       @image.draw(@x, @y, 0, -1.0, 1.0)
+    elsif @direction == :up
+      @image.draw_rot(@x, @y, 1, 270)
+    elsif @direction == :down
+      @image.draw_rot(@x, @y, 1, 90)
     else
       @image.draw(@x, @y, 0)
     end
@@ -103,18 +108,18 @@ class Player
   end
 
 
-  def goose_honked?
-    @goose_honked
-  end
-
-  def goose_honk(goose)
-    if Gosu::distance(@x, @y, goose.x, goose.y) < 35
-      puts 'goose honks'
-      @goose_honked = true
-      @honk.play
-      true
-    else
-      false
-    end
-  end
+  # def goose_honked?
+  #   @goose_honked
+  # end
+  #
+  # def goose_honk(goose)
+  #   if Gosu::distance(@x, @y, goose.x, goose.y) < 35
+  #     puts 'goose honks'
+  #     @goose_honked = true
+  #     @honk.play
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 end
