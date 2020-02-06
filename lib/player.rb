@@ -77,9 +77,11 @@ class Player
   end
 
   def collect_dots(dots)
-    dots.reject! do |dot|
-      if Gosu::distance(@x, @y, dot.x, dot.y) < 35
-        @bleep.play
+
+    if @window.button_down? KbI
+
+      dots.reject! do |dot|
+
         Gosu::distance(@x, @y, dot.x, dot.y) < 35
       end
     end
@@ -90,13 +92,15 @@ class Player
   end
 
   def collect_cherry(cherry)
-    if Gosu::distance(@x - 30, @y, cherry.x, cherry.y) < 80
-      puts 'cherry collected'
-      @success.play
-      @cherry_collected = true
-      true
-    else
-      false
+    if @window.button_down? KbI
+      if Gosu::distance(@x - 30, @y, cherry.x, cherry.y) < 80
+        puts 'cherry collected'
+        @success.play
+        @cherry_collected = true
+        true
+      else
+        false
+      end
     end
   end
 
