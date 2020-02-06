@@ -82,23 +82,22 @@ class Level
     end
   end
 
-  def goose_honk?
-    distance
+def hit_by_goose?
+  player_box = @player.hit_box(@player.x, @player.y)
 
-    p_box = @player.hit_box(@player.x, @player.y)
-    goose_box = @goose.hit_box(@goose.x, @goose.y)
-      if p_box[:x] + p_box[:width] >= goose_box[:x] &&
-        p_box[:x] <= goose_box[:x] + goose_box[:width] &&
-        p_box[:y] + p_box[:height] >= goose_box[:y] &&
-        p_box[:y] <= goose_box[:y] + goose_box[:height]
-        @honk.play
-        true
-      else
-        false
-      end
+  @gooses.any? do |goose|
+    goose_box = goose.hit_box(goose.x, goose.y)
+    if player_box[:x] + player_box[:width] >= goose_box[:x] &&
+      player_box[:x] <= goose_box[:x] + goose_box[:width] &&
+      player_box[:y] + player_box[:height] >= goose_box[:y] &&
+      player_box[:y] <= goose_box[:y] + goose_box[:height]
+      @honk.play
+      true
+    else
+      false
     end
   end
-
+end
   def level_finished
     puts 'finished level'
     @window.show_level_finished_screen
@@ -119,26 +118,29 @@ class Level
     level  = File.open(level[:path]).readlines[1..-1]
 
     rows.times do |row|
-      columns.times do |column|
-        tile_type = level[row][column]
-        case tile_type
-          when 'P'
-            player = Player.new(@window, self, column, row)
-          when 'D'
-            dots << Dot.new(@window, column, row)
-          when 'G'
-            ghosts << Ghost.new(@window, self, column, row)
-          when 'C'
-            cherry = Cherry.new(@window, column, row)
-          when 'M'
-            gooses << Goose.new(@window, self, column, row)
-          when 'Y'
-            yoshis << Yoshi.new(@window, self, column, row)
-          else
-        end
-        @map.add_tile(row, column, tile_type)
+    columns.times do |column|
+      tile_type = level[row][column]
+      case tile_type
+      when 'P'
+        player = Player.new(@window, self, column, row)
+      when 'D'
+        dots << Dot.new(@window, column, row)
+      when 'M'
+        gooses << Goose.new(@window, self, column, row)
+      when 'G'
+        ghosts << Ghost.new(@window, self, column, row)
+      when 'C'
+        cherry = Cherry.new(@window, column, row)
+      when 'Y'
+        yoshis << Yoshi.new(@window, self, column, row)
+      else
       end
+      @map.add_tile(row, column, tile_type)
     end
+  end
+
+
 
     [player, dots, ghosts, cherry, gooses, yoshis]
+  end
   end
