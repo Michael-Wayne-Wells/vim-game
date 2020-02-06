@@ -6,7 +6,7 @@ class Ghost
   def initialize(window, level, column, row)
     @window = window
     @level = level
-    @image = Image.new("media/goose.png", :tileable => true)
+    @image = Image.new("media/ghost.png", :tileable => true)
     @width = @image.width
     @height = @image.height
     @offset_y = 65

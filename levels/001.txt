@@ -3,10 +3,10 @@
 BBBBBBBBB#G####
 ######BBB###Y##
 ###G##BBB###G##
-DDDDDDDD####DDD
+DDDDDDDD##M#DDD
 #BBBB#GD##M#D##
 D###B##DDDDDD##
 BB#DBBBBBBB####
 ###C######BBB##
 #PDDBBBB####B##
-####B###M###G##
+####B#######G##
