@@ -1,12 +1,12 @@
 #:  P: player, C: cherry, #: stone, B: block, M: goose
-######BBB######
-BBBBBBBBB#G####
-######BBB###Y##
-###G##BBB###G##
-DDDDDDDD##M#DDD
-#BBBB#GD##M#D##
+######BBB###D##
+BBBBBBBBB#G#D##
+######BBB###D##
+###G##BBB###D##
+DDDDDDDD##M#D##
+#BBBB##D#YM#D##
 D###B##DDDDDD##
 BB#DBBBBBBB####
-###C######BBB##
-#PDDBBBB####B##
-####B#######G##
+###D######BBB##
+DPDDBBBB####B##
+####B####C#####
