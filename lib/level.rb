@@ -12,10 +12,10 @@ class Level
     @background_music       = Song.new("media/8-punk-8-bit-music.mp3")
     @honk                   = Gosu::Sample.new("media/honk-sound.mp3")
     @moan                   = Gosu::Sample.new("media/GHOSTLY.mp3")
-    @tongue                  = Gosu::Sample.new("media/yoshi-tongue.mp3")
+    @ow                  = Gosu::Sample.new("media/yoshi-ow.mp3")
     @map                    = Map.new(@window)
     @player, @dots, @ghosts, @cherry, @gooses, @yoshis, @bosses = read_level(level, ROWS, COLUMNS)
-    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true
+    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
   end
 
   def update
@@ -81,6 +81,7 @@ class Level
         player_box[:x] <= boss_box[:x] + boss_box[:width] &&
         player_box[:y] + player_box[:height] >= boss_box[:y] &&
         player_box[:y] <= boss_box[:y] + boss_box[:height]
+        @ow.play
         true
       else
         false
