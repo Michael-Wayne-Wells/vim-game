@@ -12,11 +12,12 @@ class Player
     @image = @chomp2
     @width = @image.width
     @height = @image.height
-    @offset_x = 55
-    @offset_y = 75
+    @offset_x = 40
+    @offset_y = 80
     @x = column * @image.width
     @y = row * @offset_y
     @direction = :right
+    @angle = 0
   end
 
   def hit_box(x, y)
@@ -29,6 +30,10 @@ class Player
   def draw
     if @direction == :left
       @image.draw(@x, @y, 0, -1.0, 1.0)
+    elsif @direction == :up
+      @image.draw_rot(@x, @y, 1, 270)
+    elsif @direction == :down
+      @image.draw_rot(@x, @y, 1, 90)
     else
       @image.draw(@x, @y, 0)
     end
