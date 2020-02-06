@@ -7,7 +7,7 @@ class Menu
       @window,
       "PacMan in Vimland: Gosu Ghost Goose",
       Gosu::default_font_name,
-      50,
+      70,
       10,
       WIDTH,
       :center
@@ -16,7 +16,7 @@ class Menu
 
   def draw
     @title.draw(0,(HEIGHT - 300) / 2,0)
-    @menu_image.draw(130,400,0)
+    @menu_image.draw(130,450,0)
     @start_music.play
   end
 

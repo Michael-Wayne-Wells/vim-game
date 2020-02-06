@@ -30,15 +30,15 @@ class Player
 
   def draw
     if @direction == :left
-      @image.draw(@x + 60, @y - 50, 0, -1.0, 1.0)
+      @image.draw(@x + 40, @y - 50, 0, -1.0, 1.0)
     elsif @direction == :up
-      @image.draw_rot(@x, @y, 1, 270)
+      @image.draw_rot(@x -20, @y, 1, 270)
     elsif @direction == :down
-      @image.draw_rot(@x, @y, 1, 90)
+      @image.draw_rot(@x - 20, @y, 1, 90)
     elsif @direction = :right
-      @image.draw(@x - 60, @y -50, 0)
+      @image.draw(@x - 40, @y -50, 0)
     else
-      @image.draw(@x, @y, 0)
+      @image.draw(@x - 20, @y, 0)
     end
   end
 

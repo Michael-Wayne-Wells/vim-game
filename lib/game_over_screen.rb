@@ -2,9 +2,11 @@ class GameOverScreen
 
   def initialize(window)
     @window = window
+    @sad_pac_image = Gosu::Image.new("media/sad-pac.png", :tileable => false)
+
     @title = Image.from_text(
       @window,
-      "Game Over !!!!",
+      "GAME OVER !!!",
       Gosu::default_font_name,
       150,
       10,
@@ -15,6 +17,7 @@ class GameOverScreen
 
   def draw
     @title.draw(0,(HEIGHT - 300) / 2,0)
+    @sad_pac_image.draw(470,450,0)
   end
 
   def update ; end
