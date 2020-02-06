@@ -15,7 +15,7 @@ class Level
     @tongue                  = Gosu::Sample.new("media/yoshi-tongue.mp3")
     @map                    = Map.new(@window)
     @player, @dots, @ghosts, @cherry, @gooses, @yoshis, @bosses = read_level(level, ROWS, COLUMNS)
-    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true
+    @background_music.play(true) unless ENV['DISABLE_SOUND'] == 'true'
   end
 
   def update
