@@ -27,22 +27,21 @@ class Level
     # @player.goose_honk(@goose)
     if hit_by_ghost?
       game_over
-    # elsif hit_by_goose?
-    #   game_over
+    elsif hit_by_goose?
+      game_over
     elsif @dots.size == 0
       level_finished
     end
     @ghosts.each{ |ghost| ghost.update }
-    # @gooses.each{ |goose| goose.update }
+    @gooses.each{ |goose| goose.update }
+    @yoshis.each{ |yoshi| yoshi.update }
   end
 
   def draw
     @map.draw
-    (@dots + @ghosts).each do |e|
+    (@dots + @ghosts + @gooses + @yoshis).each do |e|
       e.draw
     end
-    @gooses.draw
-    @yoshis.draw
     @cherry.draw unless @player.cherry_collected?
     @player.draw
   end
@@ -61,6 +60,21 @@ class Level
         player_box[:x] <= ghost_box[:x] + ghost_box[:width] &&
         player_box[:y] + player_box[:height] >= ghost_box[:y] &&
         player_box[:y] <= ghost_box[:y] + ghost_box[:height]
+        true
+      else
+        false
+      end
+    end
+  end
+
+  def hit_by_yoshi?
+    player_box = @player.hit_box(@player.x, @player.y)
+    @yoshis.any? do |yoshi|
+      yoshi_box = yoshi.hit_box(yoshi.x, yoshi.y)
+      if player_box[:x] + player_box[:width] >= yoshi_box[:x] &&
+        player_box[:x] <= yoshi_box[:x] + yoshi_box[:width] &&
+        player_box[:y] + player_box[:height] >= yoshi_box[:y] &&
+        player_box[:y] <= yoshi_box[:y] + yoshi_box[:height]
         true
       else
         false
@@ -117,9 +131,9 @@ class Level
           when 'C'
             cherry = Cherry.new(@window, column, row)
           when 'M'
-            gooses = Goose.new(@window, self, column, row)
+            gooses << Goose.new(@window, self, column, row)
           when 'Y'
-            yoshis = Yoshi.new(@window, self, column, row)
+            yoshis << Yoshi.new(@window, self, column, row)
           else
         end
         @map.add_tile(row, column, tile_type)
@@ -128,4 +142,3 @@ class Level
 
     [player, dots, ghosts, cherry, gooses, yoshis]
   end
-end
