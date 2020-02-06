@@ -17,6 +17,7 @@ class Player
     @x = column * @image.width
     @y = row * @offset_y
     @direction = :right
+    @success = Gosu::Sample.new("media/success-sound-effect.mp3")
     @angle = 0
   end
 
@@ -85,6 +86,7 @@ class Player
   def collect_cherry(cherry)
     if Gosu::distance(@x, @y, cherry.x, cherry.y) < 35
       puts 'cherry collected'
+      @success.play
       @cherry_collected = true
       true
     else
