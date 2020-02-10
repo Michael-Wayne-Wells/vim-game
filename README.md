@@ -36,7 +36,7 @@ All of these commands will be entered in your terminal window.
 ### Game Play
 1. Click the space bar to enter the game.
 2. Navigate your character through the game maze with using **h, j, k, l**, which are the VIM commands for left, down, up, and right, respectively.
-3. Use **i** to grab the bonus bunch of cherries.
+3. Use **i** to collect dots or grab the bonus bunch of cherries.
 4. To exit, press **esc** or **q**.
 
 ### Sources and Inspiration
