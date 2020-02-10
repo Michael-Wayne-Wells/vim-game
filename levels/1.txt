@@ -1,6 +1,6 @@
-#:stone, B: block, C: Cherry, M: goose
-###D#DB##D#####
-#B#B##B##BDB###
+iii#l :stone, B: block, C: Cherry, M: goose
+######B########
+#B#B##B##B#B###
 P##D######D####
 ###DDCDDDDDDD##
 BB#D#BBB###BB##
